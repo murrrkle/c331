@@ -663,20 +663,20 @@ class RBTNode<K extends Comparable<K>, V> {
 
   private RBTNode<K, V> delete_case_3a(RBTNode<K, V> x) {
     
-      x.leftRotate();
-      x.left().setColour(Colour.BLACK);
+      x.parent().leftRotate();
       x.setColour(Colour.BLACK);
-      x.parent().right().setColour(Colour.BLACK);
+      x.parent().parent().right().setColour(Colour.BLACK);
+     
  
       x.setBlackHeight(x.blackHeight() - 1);
-      x.left().setBlackHeight(x.left().blackHeight() - 1);
+      x.parent().setBlackHeight(x.parent().blackHeight() - 1);
       
-      if (x.right().colour() == Colour.BLACK)
-          x.parent().setBlackHeight(x.parent().blackHeight() + 1);
+      if (x.parent.right().colour() == Colour.BLACK)
+          x.parent().parent().setBlackHeight(x.parent().parent().blackHeight() + 1);
       // Increases by 1 if Right child of x has a BLACK node.
       
-      else if(x.right().colour() == Colour.RED)
-          x.parent().setBlackHeight(x.parent().blackHeight() + 2);
+      else if(x.parent().right().colour() == Colour.RED)
+          x.parent().parent().setBlackHeight(x.parent().parent().blackHeight() + 2);
        // Increases by 2 if Right child of x has a RED node.
       
       return x;
@@ -692,14 +692,14 @@ class RBTNode<K extends Comparable<K>, V> {
 
   private RBTNode<K, V> delete_case_3b(RBTNode<K, V> x) {
       
-      x.setColour(Colour.REDBLACK);
-      x.left().setColour(Colour.BLACK);
-      x.right().setColour(Colour.RED);
+      x.setColour(Colour.BLACK); // Alpha
+      x.parent().setColour(Colour.REDBLACK); // Beta
+      x.parent().right().setColour(Colour.RED); // Delta
       
       x.setBlackHeight(x.blackHeight() - 1);
-      x.left().setBlackHeight(x.left().blackHeight() - 1);
-      
-      return x;
+      x.parent().setBlackHeight(x.parent().blackHeight() - 1);
+    
+      return x.parent(); // Set x to point to its parent.
   }
 
   // Implements the adjustment needed in case 3(c):
@@ -712,7 +712,7 @@ class RBTNode<K extends Comparable<K>, V> {
 
   private RBTNode<K, V> delete_case_3c(RBTNode<K, V> x) {
 
-      x.parent().right().rightRotate();
+      x.parent().right().right().rightRotate();
       x.parent().right().setColour(Colour.BLACK);
       x.parent().right().right().setColour(Colour.RED);
       
@@ -749,14 +749,13 @@ class RBTNode<K extends Comparable<K>, V> {
   // this change should be returned as output.
 
   private RBTNode<K, V> delete_case_3e(RBTNode<K, V> x) {
-      RBTNode<K, V> y = x.parent();
-      y.left().setColour(Colour.BLACK);
-      y.setColour(Colour.DOUBLEBLACK);
-      y.right().setColour(Colour.RED);
+      x.parent().setColour(Colour.DOUBLEBLACK);
+      x.setColour(Colour.BLACK);
+      x.parent().right().setColour(Colour.RED);
       
       // No change in black heights
       
-      return x.parent();
+      return x.parent(); // Set x to point to its former parent.
   }
 
   // Implements the adjustment needed in case 3(f):
@@ -769,24 +768,22 @@ class RBTNode<K extends Comparable<K>, V> {
   private RBTNode<K, V> delete_case_3f(RBTNode<K, V> x) {
 
       // Mirror of Subcase 3(a)
-      x.rightRotate();
-      x.right().setColour(Colour.BLACK);
+      x.parent().rightRotate();
       x.setColour(Colour.BLACK);
-      x.parent().left().setColour(Colour.BLACK);
+      x.parent().parent().left().setColour(Colour.BLACK);
+     
+ 
+      x.setBlackHeight(x.blackHeight() - 1);
+      x.parent().setBlackHeight(x.parent().blackHeight() - 1);
       
-      x.setBlackHeight(x.blackHeight - 1);
-      x.right().setBlackHeight(x.right().blackHeight - 1);
-       
-       
-     if (x.left().colour() == Colour.BLACK){
-      x.parent().setBlackHeight(x.parent().blackHeight + 1);
-      } // Increases by 1 if Right child of x has a BLACK node.
-       
-     else if(x.left().colour() == Colour.RED){
-      x.parent().setBlackHeight(x.parent().blackHeight + 2);
-      } // Increases by 2 if Right child of x has a RED node.
+      if (x.parent.left().colour() == Colour.BLACK)
+          x.parent().parent().setBlackHeight(x.parent().parent().blackHeight() + 1);
       
+      else if(x.parent().left().colour() == Colour.RED)
+          x.parent().parent().setBlackHeight(x.parent().parent().blackHeight() + 2);
+       
       return x;
+      
   }
 
   // Implements the adjustment needed in case 3(g):
@@ -799,15 +796,14 @@ class RBTNode<K extends Comparable<K>, V> {
 
   private RBTNode<K, V> delete_case_3g(RBTNode<K, V> x) {
 
-      x.setColour(Colour.REDBLACK);
-      x.right().setColour(Colour.BLACK);
-      x.left().setColour(Colour.RED);
-      x.setParent(x);
+      x.setColour(Colour.BLACK); // Alpha
+      x.parent().setColour(Colour.REDBLACK); // Beta
+      x.parent().left().setColour(Colour.RED); // Delta
       
-      x.setBlackHeight(x.blackHeight - 1);
-      x.right().setBlackHeight(x.left().blackHeight - 1);
-        
-      return x;
+      x.setBlackHeight(x.blackHeight() - 1);
+      x.parent().setBlackHeight(x.parent().blackHeight() - 1);
+    
+      return x.parent(); // Set x to point to its parent.
 
   }
 
@@ -821,7 +817,7 @@ class RBTNode<K extends Comparable<K>, V> {
 
   private RBTNode<K, V> delete_case_3h(RBTNode<K, V> x) {
 
-      x.parent().left().leftRotate();
+      x.parent().left().left().rightRotate();
       x.parent().left().setColour(Colour.BLACK);
       x.parent().left().left().setColour(Colour.RED);
       
@@ -859,14 +855,13 @@ class RBTNode<K extends Comparable<K>, V> {
 
   private RBTNode<K, V> delete_case_3j(RBTNode<K, V> x) {
 
-      x.right().setColour(Colour.BLACK);
-      x.setColour(Colour.DOUBLEBLACK);
-      x.left().setColour(Colour.RED);
-      x.setParent(x);
+      x.parent().setColour(Colour.DOUBLEBLACK);
+      x.setColour(Colour.BLACK);
+      x.parent().LEFT().setColour(Colour.RED);
       
       // No change in black heights
       
-      return x;
+      return x.parent(); // Set x to point to its former parent.
   }
 
   // Method for the deletion of a node with a given key.
