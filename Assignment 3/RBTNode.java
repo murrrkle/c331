@@ -468,7 +468,7 @@ class RBTNode<K extends Comparable<K>, V> {
 
   private RBTNode<K, V> insert_case_1a(RBTNode<K, V> grandparent) {
       
-      grandparent.left().setColour(Colour.BLACK);
+      grandparent.left().setColour(Colour.BLACK); 
       grandparent.right().setColour(Colour.BLACK);
       grandparent.setColour(Colour.RED);
       
@@ -662,8 +662,7 @@ class RBTNode<K extends Comparable<K>, V> {
   // as output.
 
   private RBTNode<K, V> delete_case_3a(RBTNode<K, V> x) {
-      
-      
+    
       x.leftRotate();
       x.left().setColour(Colour.BLACK);
       x.setColour(Colour.BLACK);
