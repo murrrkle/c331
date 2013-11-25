@@ -1,5 +1,3 @@
-//Hello World
-
 package cpsc331.assignment3;
 
 import cpsc331.assignment3.Colour;
