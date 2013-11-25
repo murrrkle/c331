@@ -1,0 +1,35 @@
+#! /bin/tcsh
+
+echo 'Dynamic Tests for RBTMap Class'
+
+echo ' '
+
+echo 'Compiling Test Code'
+
+javac TestEmptyMap.java
+javac TestSizeOneMap.java
+javac TestIncreasingMap.java
+
+echo ' '
+
+echo 'Tests for Empty Map'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestEmptyMap
+
+echo ' '
+
+echo 'Tests for Map with Size One'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestSizeOneMap
+
+echo ' '
+
+echo 'Tests for Large Maps: Keys Inserted in Increasing Order'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestIncreasingMapInsert

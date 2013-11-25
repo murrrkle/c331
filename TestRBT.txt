@@ -1,0 +1,313 @@
+#! /bin/tcsh
+
+echo 'Dynamic Tests for RBT Class'
+
+echo ' '
+
+echo 'Compiling Test Code'
+
+javac RBTUtils.java
+
+javac TestEmptyTree.java
+javac TestSizeOne.java
+javac TestEasy1.java
+javac TestEasy2.java
+javac TestInsertLeft.java
+javac TestInsertRight.java
+javac TestInsert1a.java
+javac TestInsert1b.java
+javac TestInsert4a.java
+javac TestInsert4b.java
+javac TestInsert2.java
+javac TestInsert5.java
+javac TestInsert3.java
+javac TestInsert6.java
+javac TestIncreasingInsert.java
+javac TestDecreasingInsert.java
+javac TestVariedInsert.java
+
+javac TestEasyDelete1.java
+javac TestEasyDelete2.java
+javac TestEasyDelete3.java
+javac TestDelete3eSmall.java
+javac TestDelete3jSmall.java
+javac TestDelete3eLarge.java
+javac TestDelete3jLarge.java
+javac TestDelete3a.java
+javac TestDelete3f.java
+javac TestDelete3b.java
+javac TestDelete3g.java
+javac TestDelete3c.java
+javac TestDelete3h.java
+javac TestDelete3d.java
+javac TestDelete3i.java
+javac TestLargeDelete1.java
+javac TestLargeDelete2.java
+
+echo ' '
+
+echo 'Tests for Empty Tree'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestEmptyTree
+
+echo ' '
+
+echo 'Tests for a Tree with Size One'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestSizeOne
+
+echo ' '
+
+echo 'Tests for an Easy Insertion Case: New Node is at the Root of the Tree'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestEasy1
+
+echo ' '
+
+echo 'Tests for another Easy Insertion Case: New Node has a Black Parent'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestEasy2
+
+echo ' '
+
+echo 'Test for Insertion of a Left Child'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestInsertLeft
+
+echo ' '
+
+echo 'Test for Insertion of a Right Child'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestInsertRight
+
+echo ' '
+
+echo 'Tests for Insertion: Case 1(a)'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestInsert1a
+
+echo ' '
+
+echo 'Tests for Insertion: Case 1(b)'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestInsert1b
+
+echo ' '
+
+echo 'Tests for Insertion: Case 4(a)'
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestInsert4a
+
+echo ' '
+
+echo 'Tests for Insertion: Case 4(b)'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestInsert4b
+
+echo ' '
+
+echo 'Tests for Insertion: Case 2'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestInsert2
+
+echo ' '
+
+echo 'Tests for Insertion: Case 5'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestInsert5
+
+echo ' '
+
+echo 'Tests for Insertion: Case 3'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestInsert3
+
+echo ' '
+
+echo 'Tests for Insertion: Case 6'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestInsert6
+
+echo ' '
+
+echo 'Testing Creations of Larger Trees: Insertion of Keys in Increasing Order'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestIncreasingInsert
+
+echo ' '
+
+echo 'Testing Creations of Larger Trees: Insertion of Keys in Decreasing Order'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDecreasingInsert
+
+echo ' '
+
+echo 'Testing Creations of Larger Trees: Insertion of Keys in More Varied Order'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestVariedInsert
+
+echo ' '
+
+echo 'An Easy Case for Deletion: Deletion from a Tree with Size One'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestEasyDelete1
+
+echo ' '
+
+echo 'An Easy Case for Deletion: Deletion from a Tree with Size One'
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestEasyDelete1
+
+echo 'Another Easy Case for Deletion: Deletion of a RED Node'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestEasyDelete2
+
+echo ' '
+
+echo 'Another Easy Case for Deletion: Parent of Deleted Node is RED'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestEasyDelete3
+
+echo ' '
+
+echo 'Testing Deletion Case 3(e) with a Small Tree - the DOUBLEBLACK node is NIL'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDelete3eSmall
+
+echo ' '
+
+echo 'Testing Deletion Case 3(j) with a Small Tree - the DOUBLEBLACK node is NIL'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDelete3jSmall
+
+echo 'Testing Deletion Case 3(e) for a Large Tree - the DOUBLEBLACK node is not always NIL'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDelete3eLarge
+
+echo ' '
+
+echo 'Testing Deletion Case 3(j) with a Large Tree - the DOUBLEBLACK node is not always NIL'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDelete3jLarge
+
+echo  ' '
+
+echo 'Test for Deletion Case 3(a)'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDelete3a
+
+echo ' '
+
+echo 'Test for Deletion Case 3(f)'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDelete3f
+
+echo ' '
+
+echo 'Test for Deletion Case 3(b)'
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDelete3b
+
+echo ' '
+
+echo 'Test for Deletion Case 3(g)'
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDelete3g
+
+echo ' '
+
+echo 'Test for Deletion Case 3(c)'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDelete3c
+
+echo ' '
+
+echo 'Test for Deletion Case 3(h)'
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDelete3h
+
+echo ' '
+
+echo 'Test for Deletion Case 3(d)'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDelete3d
+
+echo ' '
+
+echo 'Test for Deletion Case 3(i)'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestDelete3i
+
+echo ' '
+
+echo 'First Test of Deletions from a Larger Tree: Deleting from '
+echo 'Smallest to Middle and Largest to Smallest'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestLargeDelete1
+
+echo ' '
+
+echo 'Second Test of Deletions from a Large Tree: Every Other Key '
+echo 'Has Been Deleted'
+
+echo ' '
+
+java org.junit.runner.JUnitCore cpsc331.assignment3.TestLargeDelete2
