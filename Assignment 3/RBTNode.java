@@ -289,8 +289,8 @@ class RBTNode<K extends Comparable<K>, V> {
       return temp;
   }
 
-  // Returns the number of keys included in this the subtree
-  // with this node as root storing keys that are
+  // Returns the number of keys included in the subtree
+  // with this node as root that stores keys that are
   // less than the given key, provided that the input key is
   // also stored in this subtree; -1 is returned otherwise, if the
   // key is not null..
@@ -648,10 +648,95 @@ class RBTNode<K extends Comparable<K>, V> {
   // It can be ASSUMED here that the input key is not null.
 
   private RBTNode<K, V> regular_delete(K key) throws NotFoundException {
-
-    // Details of this method must be replaced!
-    return null;
-
+      if(this.parent().left() == this) {
+          if(this.parent().right().colour == Colour.BLACK){
+              if(this.parent().right().right().colour == Colour.RED){
+                  this.delete_case_3a(this);
+              }
+          }
+      }
+      if(this.parent().left() == this){
+          if(this.parent().colour == Colour.RED){
+              if(this.parent().right().colour == Colour.BLACK){
+                  if(this.parent().right().left().colour == Colour.BLACK && this.parent().right().right().colour == Colour.BLACK){
+                      this.delete_case_3b(this);
+                  }
+              }
+          }
+      }
+      if(this.parent().left() == this){
+          if(this.parent().right().colour == Colour.BLACK){
+              if(this.parent().right().left().colour == Colour.RED){
+                  if(this.parent().right().right().colour == Colour.RED){
+                      this.delete_case_3c(this).delete_case_3a(this);
+                  }
+              }
+          }
+      }
+      if(this.parent().left() == this){
+          if(this.parent().colour == Colour.BLACK){
+              if(this.parent().right().colour == Colour.RED){
+                  if(this.parent().right().right().colour == Colour.BLACK){
+                      if(this.parent().right().left().colour == Colour.BLACK){
+                          this.delete_case_3d(this);
+                          this.regular_delete(key);
+                      }
+                  }
+              }
+          }
+      }
+      if(this.parent().left() == this){
+          if(this.parent().colour == Colour.BLACK){
+              if(this.parent().right().colour == Colour.BLACK){
+                  if(this.parent().right().right().colour == Colour.BLACK){
+                      if(this.parent().right().left().colour == Colour.BLACK){
+                          this.delete_case_3e(this);
+                          this.regular_delete(key);
+                      }
+                  }
+              }
+          }
+      }
+      if(this.parent().right() == this){
+          if(this.parent().left().colour == Colour.BLACK){
+              if(this.parent().left().left().colour == Colour.RED){
+                  this.delete_case_3f(this);
+              }
+          }
+          if(this.parent().colour == Colour.RED){
+              if(this.parent().left().colour == Colour.BLACK){
+                  if(this.parent().left().left().colour == Colour.BLACK){
+                      if(this.parent().left().right().colour == Colour.BLACK){
+                          this.delete_case_3g(this);
+                      }
+                  }
+              }
+          }
+          if(this.parent().left().colour == Colour.BLACK){
+              if(this.parent().left().left().colour == Colour.BLACK){
+                  if(this.parent().left().right().colour == Colour.RED){
+                      this.delete_case_3h(this);
+                  }
+              }
+          }
+          if(this.parent().colour == Colour.BLACK){
+              if(this.parent().left().colour == Colour.RED){
+                  if(this.parent().left().left().colour == Colour.BLACK){
+                      if(this.parent().left().right().colour == Colour.BLACK){
+                          this.delete_case_3i(this);
+                      }
+                  }
+              }
+              if(this.parent().left().colour == Colour.BLACK){
+                  if(this.parent().left().left().colour == Colour.BLACK){
+                      if(this.parent().left().right().colour == Colour.BLACK){
+                          this.delete_case_3j(this);
+                      }
+                  }
+              }
+          }
+      }
+      return null;
   }
 
   // The next ten methods each implement one of the adjustments
@@ -902,6 +987,10 @@ class RBTNode<K extends Comparable<K>, V> {
               
               else
                   temp.parent().setRight(NILNode);
+              
+              if (temp.colour() == Colour.BLACK)              
+                  temp.parent().setColour(Colour.DOUBLEBLACK);
+              
               temp.parent().regular_delete(key);
           }
       }
