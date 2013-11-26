@@ -66,9 +66,12 @@ class RBT<K extends Comparable<K>, V> {
 
     public RBTNode<K, V> next() {
 
-      // Implementation must be supplied!
-      return null;
-
+        if (!this.hasNext()) {
+            return null;
+        }
+            
+        else
+            throw new NoSuchElementException();
     }
 
     // Returns the index of the next element to be visited,
