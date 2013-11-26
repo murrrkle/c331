@@ -671,16 +671,11 @@ class RBTNode<K extends Comparable<K>, V> {
   // as output.
 
   private RBTNode<K, V> delete_case_3a(RBTNode<K, V> x) {
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 32c63d0a71ccfce27f853b292b6eeef314026488
       x.parent().leftRotate();
       x.setColour(Colour.BLACK);
       x.parent().parent().right().setColour(Colour.BLACK);
      
- 
       x.setBlackHeight(x.blackHeight() - 1);
       x.parent().setBlackHeight(x.parent().blackHeight() - 1);
       
@@ -762,10 +757,7 @@ class RBTNode<K extends Comparable<K>, V> {
   // this change should be returned as output.
 
   private RBTNode<K, V> delete_case_3e(RBTNode<K, V> x) {
-<<<<<<< HEAD
-      
-=======
->>>>>>> 32c63d0a71ccfce27f853b292b6eeef314026488
+
       x.parent().setColour(Colour.DOUBLEBLACK);
       x.setColour(Colour.BLACK);
       x.parent().right().setColour(Colour.RED);
@@ -874,11 +866,8 @@ class RBTNode<K extends Comparable<K>, V> {
 
       x.parent().setColour(Colour.DOUBLEBLACK);
       x.setColour(Colour.BLACK);
-<<<<<<< HEAD
       x.parent().left().setColour(Colour.RED);
-=======
-      x.parent().LEFT().setColour(Colour.RED);
->>>>>>> 32c63d0a71ccfce27f853b292b6eeef314026488
+      x.parent().left().setColour(Colour.RED);
       
       // No change in black heights
       
