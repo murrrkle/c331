@@ -15,14 +15,7 @@ public class ArrayUtils<T extends Comparable<T>> {
     }
     
     private int partition(Array<T> A, int left, int right)
-<<<<<<< HEAD
     {   
-=======
-    {
-        int i;
-        int j;
-        
->>>>>>> ddfc141a14f5536f4d2718bac15f60fa22161010
         int i = left - 1;
         int j = right;
         
@@ -33,13 +26,9 @@ public class ArrayUtils<T extends Comparable<T>> {
                 while(j > i)
                 {
                     if (j == left)
-<<<<<<< HEAD
                     {
                         break;
                     }
-=======
-                        {break;}
->>>>>>> ddfc141a14f5536f4d2718bac15f60fa22161010
                 j--;
                 }
                 
@@ -50,16 +39,9 @@ public class ArrayUtils<T extends Comparable<T>> {
                 
             }
         
-<<<<<<< HEAD
         exchange(A, i, j);
         return i;
         }
-=======
-        exchange(i,j);
-        return i;
-        }
-    
->>>>>>> ddfc141a14f5536f4d2718bac15f60fa22161010
     }
     
     private void exchange(Array<T> A, int i, int j)
