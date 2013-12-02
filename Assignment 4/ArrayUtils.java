@@ -21,7 +21,6 @@ public class ArrayUtils<T extends Comparable<T>> {
         
         while (true)
         {
-<<<<<<< HEAD
             while(++i < right)            
             
             while(--j > right)
@@ -32,34 +31,10 @@ public class ArrayUtils<T extends Comparable<T>> {
                 break;
             
             exchange(A, i, j);
-=======
-            while(++i < j)
-            {}
-            
-            while(--j > i)
-            {
-                if (j == left)
-                {
-                    break;
-                }
-            }
-                
-            if (i >= j)
-            {
-                break;
-            }
-            
-            exchange(A, i, j)
->>>>>>> c41bd98c7e588064e81ac4633bb0a76faf624e49
         }
         
         exchange(A, i, right);
         return i;
-<<<<<<< HEAD
-=======
-        
-        }
->>>>>>> c41bd98c7e588064e81ac4633bb0a76faf624e49
     }
     
     private void exchange(Array<T> A, int i, int j)
