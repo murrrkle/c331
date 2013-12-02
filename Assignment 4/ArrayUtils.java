@@ -11,7 +11,34 @@ public class ArrayUtils<T extends Comparable<T>> {
     
     private int partition(Array<T> A, int left, int right)
     {
-        return 0;
+        int i;
+        int j;
+        
+        int i = left - 1;
+        int j = right;
+        
+        while (true)
+        {
+            while(i < j)
+            {
+                while(j > i)
+                {
+                    if (j == left)
+                        {break;}
+                j--;
+                }
+                
+            if (i >= j)
+                {break;}
+                
+            i++;
+                
+            }
+        
+        exchange(i,j);
+        return i;
+        }
+    
     }
     
     private void exchange(Array<T> A, int i, int j)
