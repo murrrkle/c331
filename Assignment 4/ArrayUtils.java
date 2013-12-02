@@ -21,9 +21,9 @@ public class ArrayUtils<T extends Comparable<T>> {
         
         while (true)
         {
-            while(i < j)
+            while(++i < j)
             {
-                ++i;
+                
                 while(j > i)
                 {
                     if (j == left)
