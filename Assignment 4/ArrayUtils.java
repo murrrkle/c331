@@ -22,26 +22,27 @@ public class ArrayUtils<T extends Comparable<T>> {
         while (true)
         {
             while(++i < j)
+            {}
+            
+            while(--j > i)
             {
-                
-                while(j > i)
+                if (j == left)
                 {
-                    if (j == left)
-                    {
-                        break;
-                    }
-                j--;
+                    break;
                 }
+            }
                 
             if (i >= j)
-                {break;}
-                
-
-                
+            {
+                break;
             }
+            
+            exchange(A, i, j)
+        }
         
-        exchange(A, i, j);
+        exchange(A, i, right);
         return i;
+        
         }
     }
     
