@@ -23,6 +23,7 @@ public class ArrayUtils<T extends Comparable<T>> {
         {
             while(i < j)
             {
+                ++i;
                 while(j > i)
                 {
                     if (j == left)
@@ -35,7 +36,7 @@ public class ArrayUtils<T extends Comparable<T>> {
             if (i >= j)
                 {break;}
                 
-            i++;
+
                 
             }
         
