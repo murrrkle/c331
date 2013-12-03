@@ -45,7 +45,7 @@ public class ArrayUtils<T extends Comparable<T>> {
         {
             while(A.get(++i).compareTo(A.get(right)) < 0)
             
-            while(A.get(--j).compareTo(A.get(right)) < 0)
+            while(A.get(--j).compareTo(A.get(right)) > 0)
                 if (j == left)
                     break;
             
@@ -79,8 +79,20 @@ public class ArrayUtils<T extends Comparable<T>> {
      * @param A - An <tt>Array</tt>
      */
     public void sort(Array<T> A )
-    {    
+    {   
+        System.out.print("Unsorted: [");
+        for (int i = 0; i < A.length() - 1; i++)
+            System.out.print(A.get(i).toString() + ", ");
+        System.out.print(A.get(A.length()-1));
+        System.out.println("]");
+        
         quicksort(A, 0, A.length() - 1);
+        
+        System.out.print("Sorted:   [");
+        for (int i = 0; i < A.length() - 1; i++)
+            System.out.print(A.get(i).toString() + ", ");
+        System.out.print(A.get(A.length()-1));
+        System.out.println("]\n");
     }
 
 }
