@@ -24,11 +24,15 @@ public class ArrayUtils<T extends Comparable<T>> {
     {
         if(left < right)
         {
-            int pivot = partition(A,left, right);
+            int pivot = partitionV2(A,left, right);
             quicksort(A, left, pivot);
             quicksort(A, pivot + 1, right);
         }
     }
+    
+
+    
+    
     
     /**
      * @param A - An <tt>Array</tt>
@@ -36,20 +40,18 @@ public class ArrayUtils<T extends Comparable<T>> {
      * @param right - An <tt>Integer</tt> index
      * @return j -  - An <tt>Integer</tt> index used as pivot for "Divide and Conquer"
      */
-    private int partition(Array<T> A, int left, int right)
+    private int partitionV2(Array<T> A, int left, int right)
     {
         T first = A.get(left);
-        int i = left - 1 ;
-        int j = right + 1 ;
+        int i = left;
+        int j = right + 1;
 
         while (true) 
         {
-            i++;
             while ((i < right) && (A.get(i).compareTo(first) < 0))
                 i++;
             
             j--;
-            
             while ((j > left) && (A.get(j).compareTo(first) > 0))
                 j--;
 
@@ -98,7 +100,7 @@ public class ArrayUtils<T extends Comparable<T>> {
      */
     public void sort(Array<T> A)
     {   
-        System.out.println("Number of Elements in Array: " + A.length() + "\nUnsorted:");
+        System.out.print("Number of Elements in Array: " + A.length() + "\nUnsorted:");
         
         printArray(A);
         
