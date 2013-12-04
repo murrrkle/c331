@@ -8,7 +8,7 @@ public class ArrayUtilsTest
 {
     public static void main(String args[])
     {
-        for (int counter = 1; counter < 50; counter++)
+        for (int counter = 1; counter < 100; counter++)
         {
             Array<Integer> A = new Array<Integer>(counter); 
             Random rand = new Random();
@@ -17,7 +17,7 @@ public class ArrayUtilsTest
             
             for (int i = 0; i < counter; i++)
             {
-                a = rand.nextInt(100) + 1;
+                a = rand.nextInt(100);
                 A.set(i, a);
             }
             
