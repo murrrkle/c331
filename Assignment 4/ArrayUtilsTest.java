@@ -8,7 +8,7 @@ public class ArrayUtilsTest
 {
     public static void main(String args[])
     {
-        for (int counter = 1; counter < 101; counter++)
+        for (int counter = 1; counter < 21; counter++)
         {
             Array<Integer> A = new Array<Integer>(counter); 
             Random rand = new Random();

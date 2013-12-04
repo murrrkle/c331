@@ -20,19 +20,32 @@ public class ArrayUtils<T extends Comparable<T>> {
      * @param left - An <tt>Integer</tt> index
      * @param right - An <tt>Integer</tt> index
      */
-    private void quicksort(Array<T> A, int left, int right)
+    private void quicksortA(Array<T> A, int left, int right)
     {
         if(left < right)
         {
-            int pivot = partitionV2(A,left, right);
-            quicksort(A, left, pivot);
-            quicksort(A, pivot + 1, right);
+            int pivot = partitionV1(A,left, right);
+            quicksortA(A, left, pivot);
+            quicksortA(A, pivot + 1, right);
         }
     }
     
-
-    
-    
+    /**
+     * Implementation of Quicksort, a "divide and conquer" algorithm. Recursively calls itself to sort progressively parts of an <tt>Array</tt>.
+     * 
+     * @param A - An <tt>Array</tt>
+     * @param left - An <tt>Integer</tt> index
+     * @param right - An <tt>Integer</tt> index
+     */
+    private void quicksortB(Array<T> A, int left, int right)
+    {
+        if(left < right)
+        {
+            int pivot = partitionV2(A, left, right);
+            quicksortB(A, left, pivot);
+            quicksortB(A, pivot + 1, right);
+        }
+    }
     
     /**
      * @param A - An <tt>Array</tt>
@@ -40,7 +53,7 @@ public class ArrayUtils<T extends Comparable<T>> {
      * @param right - An <tt>Integer</tt> index
      * @return j -  - An <tt>Integer</tt> index used as pivot for "Divide and Conquer"
      */
-    private int partitionV2(Array<T> A, int left, int right)
+    private int partitionV1(Array<T> A, int left, int right)
     {
         T first = A.get(left);
         int i = left;
@@ -61,7 +74,32 @@ public class ArrayUtils<T extends Comparable<T>> {
             else
                 return j;
         }
-    }    
+    } 
+    
+    /**
+     * @param A - An <tt>Array</tt>
+     * @param left - An <tt>Integer</tt> index
+     * @param right - An <tt>Integer</tt> index
+     * @return j -  - An <tt>Integer</tt> index used as pivot for "Divide and Conquer"
+     */
+    private int partitionV2(Array<T> A, int left, int right)
+    {
+            T x = A.get(right);
+            int i = left - 1;
+            int j = left;
+            while (j < right) 
+            {
+                if (A.get(j).compareTo(x) <= 0) 
+                {
+                    i++;
+                    swap(A, i, j);
+                }
+                j++;
+            }
+            swap(A, i + 1, right);
+            return i + 1;
+    }
+    
     
     /**
      * Swaps the contents of two elements in A.
@@ -106,7 +144,7 @@ public class ArrayUtils<T extends Comparable<T>> {
         
         long startTime = System.nanoTime();
         
-        quicksort(A, 0, A.length() - 1);
+        quicksortB(A, 0, A.length() - 1);
         
         long endTime = System.nanoTime();
         
