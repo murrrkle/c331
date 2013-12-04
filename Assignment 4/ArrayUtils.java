@@ -34,7 +34,7 @@ public class ArrayUtils<T extends Comparable<T>> {
      * @param A - An <tt>Array</tt>
      * @param left - An <tt>Integer</tt> index
      * @param right - An <tt>Integer</tt> index
-     * @return i -  - An <tt>Integer</tt> index used as pivot for "Divide and Conquer"
+     * @return j -  - An <tt>Integer</tt> index used as pivot for "Divide and Conquer"
      */
     private int partition(Array<T> A, int left, int right)
     {
@@ -50,7 +50,7 @@ public class ArrayUtils<T extends Comparable<T>> {
             
             j--;
             
-            while (j > left && A.get(j).compareTo(first) > 0)
+            while ((j > left) && (A.get(j).compareTo(first) > 0))
                 j--;
 
             if (i < j)
@@ -75,6 +75,13 @@ public class ArrayUtils<T extends Comparable<T>> {
         A.set(j,  temp);
     }
     
+    /**
+     * Prints the array in the following format:
+     * "[a1, a2, ..., an]"
+     * where n is the length of the array.
+     * 
+     * @param A - An <tt>Array</tt>
+     */
     private void printArray(Array<T> A)
     {
         System.out.print("[");
@@ -96,7 +103,9 @@ public class ArrayUtils<T extends Comparable<T>> {
         printArray(A);
         
         long startTime = System.nanoTime();
+        
         quicksort(A, 0, A.length() - 1);
+        
         long endTime = System.nanoTime();
         
         System.out.print("Sorted:");
