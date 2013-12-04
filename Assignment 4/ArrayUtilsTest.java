@@ -8,7 +8,7 @@ public class ArrayUtilsTest
 {
     public static void main(String args[])
     {
-        for (int counter = 1; counter < 100; counter++)
+        for (int counter = 1; counter < 101; counter++)
         {
             Array<Integer> A = new Array<Integer>(counter); 
             Random rand = new Random();
@@ -22,13 +22,8 @@ public class ArrayUtilsTest
             }
             
             ArrayUtils<Integer> B = new ArrayUtils<Integer>();
-            
-            long startTime = System.nanoTime();
-            
-            B.sort(A);
-            
-            long endTime = System.nanoTime();
-            System.out.println("Took " + (endTime - startTime) + " ns"); 
+           
+            B.sort(A); 
         }
     }
 }

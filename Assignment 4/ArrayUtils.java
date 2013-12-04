@@ -28,7 +28,6 @@ public class ArrayUtils<T extends Comparable<T>> {
             quicksort(A, left, pivot);
             quicksort(A, pivot + 1, right);
         }
-        
     }
     
     /**
@@ -43,16 +42,20 @@ public class ArrayUtils<T extends Comparable<T>> {
         int i = left - 1 ;
         int j = right + 1 ;
 
-        while (true) {
+        while (true) 
+        {
             i++;
             while ((i < right) && (A.get(i).compareTo(first) < 0))
                 i++;
+            
             j--;
+            
             while (j > left && A.get(j).compareTo(first) > 0)
                 j--;
 
             if (i < j)
                 swap(A, i, j);
+            
             else
                 return j;
         }
@@ -72,26 +75,35 @@ public class ArrayUtils<T extends Comparable<T>> {
         A.set(j,  temp);
     }
     
+    private void printArray(Array<T> A)
+    {
+        System.out.print("[");
+        for (int i = 0; i < A.length() - 1; i++)
+            System.out.print(A.get(i).toString() + ", ");
+        System.out.print(A.get(A.length()-1));
+        System.out.println("]");
+    }
+    
     /**
      * Use the sorting algorithm. Displays unsorted and the respective sorted array and the time taken to sort in nanoseconds.
      * 
      * @param A - An <tt>Array</tt>
      */
-    public void sort(Array<T> A )
+    public void sort(Array<T> A)
     {   
-        System.out.print("Unsorted: [");
-        for (int i = 0; i < A.length() - 1; i++)
-            System.out.print(A.get(i).toString() + ", ");
-        System.out.print(A.get(A.length()-1));
-        System.out.println("]");
+        System.out.println("Number of Elements in Array: " + A.length());
         
+        System.out.print("Unsorted:");
+        printArray(A);
+        
+        long startTime = System.nanoTime();
         quicksort(A, 0, A.length() - 1);
+        long endTime = System.nanoTime();
         
-        System.out.print("Sorted:   [");
-        for (int i = 0; i < A.length() - 1; i++)
-            System.out.print(A.get(i).toString() + ", ");
-        System.out.print(A.get(A.length()-1));
-        System.out.println("]\n\n");
+        System.out.print("Sorted:");
+        printArray(A);
+        
+        System.out.println("Took " + (endTime - startTime) + " ns\n"); 
     }
 
 }
