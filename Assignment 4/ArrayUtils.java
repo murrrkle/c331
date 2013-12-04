@@ -91,9 +91,8 @@ public class ArrayUtils<T extends Comparable<T>> {
      */
     public void sort(Array<T> A)
     {   
-        System.out.println("Number of Elements in Array: " + A.length());
+        System.out.println("Number of Elements in Array: " + A.length() + "\nUnsorted:");
         
-        System.out.print("Unsorted:");
         printArray(A);
         
         long startTime = System.nanoTime();
