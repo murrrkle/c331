@@ -20,30 +20,13 @@ public class ArrayUtils<T extends Comparable<T>> {
      * @param left - An <tt>Integer</tt> index
      * @param right - An <tt>Integer</tt> index
      */
-    private void quicksortA(Array<T> A, int left, int right)
+    private void quicksort(Array<T> A, int left, int right)
     {
         if(left < right)
         {
-            int pivot = partitionV1(A,left, right);
-            quicksortA(A, left, pivot);
-            quicksortA(A, pivot + 1, right);
-        }
-    }
-    
-    /**
-     * Implementation of Quicksort, a "divide and conquer" algorithm. Recursively calls itself to sort progressively parts of an <tt>Array</tt>.
-     * 
-     * @param A - An <tt>Array</tt>
-     * @param left - An <tt>Integer</tt> index
-     * @param right - An <tt>Integer</tt> index
-     */
-    private void quicksortB(Array<T> A, int left, int right)
-    {
-        if(left < right)
-        {
-            int pivot = partitionV2(A, left, right);
-            quicksortB(A, left, pivot);
-            quicksortB(A, pivot + 1, right);
+            int pivot = partition(A, left, right);
+            quicksort(A, left, pivot - 1);
+            quicksort(A, pivot + 1, right);
         }
     }
     
@@ -53,43 +36,15 @@ public class ArrayUtils<T extends Comparable<T>> {
      * @param right - An <tt>Integer</tt> index
      * @return j -  - An <tt>Integer</tt> index used as pivot for "Divide and Conquer"
      */
-    private int partitionV1(Array<T> A, int left, int right)
+    private int partition(Array<T> A, int left, int right)
     {
-        T first = A.get(left);
-        int i = left;
-        int j = right + 1;
-
-        while (true) 
-        {
-            while ((i < right) && (A.get(i).compareTo(first) < 0))
-                i++;
-            
-            j--;
-            while ((j > left) && (A.get(j).compareTo(first) > 0))
-                j--;
-
-            if (i < j)
-                swap(A, i, j);
-            
-            else
-                return j;
-        }
-    } 
-    
-    /**
-     * @param A - An <tt>Array</tt>
-     * @param left - An <tt>Integer</tt> index
-     * @param right - An <tt>Integer</tt> index
-     * @return j -  - An <tt>Integer</tt> index used as pivot for "Divide and Conquer"
-     */
-    private int partitionV2(Array<T> A, int left, int right)
-    {
-            T x = A.get(right);
+            T last = A.get(right);
             int i = left - 1;
             int j = left;
+            
             while (j < right) 
             {
-                if (A.get(j).compareTo(x) <= 0) 
+                if (A.get(j).compareTo(last) <= 0) 
                 {
                     i++;
                     swap(A, i, j);
@@ -144,7 +99,7 @@ public class ArrayUtils<T extends Comparable<T>> {
         
         long startTime = System.nanoTime();
         
-        quicksortB(A, 0, A.length() - 1);
+        quicksort(A, 0, A.length() - 1);
         
         long endTime = System.nanoTime();
         
