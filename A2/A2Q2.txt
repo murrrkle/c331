@@ -1,0 +1,45 @@
+/* CPSC 331 Fall 2013 with Professor Wayne Eberly
+ * Pseudo Code for Assignment 2, Question 2
+ * 
+ * @author Bryan Huff (UCID 10096604)
+ * @author Michael Hung (UCID 10099049)
+ * @author Arnold Padillo (UCID 10097013)
+ *
+ */
+ 
+  function isNested(input: String) : Boolean
+    {
+1.      Declare S to be a new ListStack. 
+        
+        char[] symbols = input.toCharArray(); 
+      
+        Declare i to be an integer with value equal to 0 
+        
+2.        while(i < symbols.length)
+
+3.            if (symbols[i] is '(' OR symbols[i] is '['):
+4.                Push symbols[i] onto stack; 
+            
+5.            else if (symbols[i] is ')' OR symbols[i] is ']'):
+			  {
+6.					if (Stack is Empty)
+7.						return false
+                    
+8.            		else if (Top of stack is '(' AND symbols[i] is ']') OR (Top of stack is "[" AND symbols[i] is ')')
+9.						return false
+                    
+10.           		else if  (Top of stack is '(' AND symbols[i] is ')') OR  (Top of stack is '[' AND symbols[i] is ']')
+11.						Pop element off top of Stack
+                    
+              } 
+            end conditionals
+12.         i:= i + 1
+        end while
+        
+13.     if (Stack is not Empty)
+14.			return false
+        end conditional
+		
+15.     return true
+	}
+end function
